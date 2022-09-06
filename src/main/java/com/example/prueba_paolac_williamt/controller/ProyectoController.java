@@ -24,6 +24,11 @@ public class ProyectoController {
         List<Proyecto> lista=proyectoService.findByAll();
         return new ResponseEntity<>(lista,HttpStatus.OK);
     }
+    @GetMapping("/search/{id}")
+    public ResponseEntity<Proyecto> search(@PathVariable String reference) {
+        return new ResponseEntity<>(proyectoService.findById(reference), HttpStatus.OK);
+    }
+
     @PostMapping("/crear")
     public ResponseEntity<Proyecto> crearLista(@RequestBody Proyecto u) {
         return new ResponseEntity<>(proyectoService.save(u), HttpStatus.CREATED);

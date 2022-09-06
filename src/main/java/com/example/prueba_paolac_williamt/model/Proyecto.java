@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @Data
 public class Proyecto {
-    @Id
+
     private String Referencia;
     private String nombre_proyecto;
     private String objetivo_estrategico;
