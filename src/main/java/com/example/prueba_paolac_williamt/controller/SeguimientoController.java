@@ -35,7 +35,7 @@ public class SeguimientoController {
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<Seguimiento> actualizarLista(@PathVariable String id, @RequestBody Seguimiento c) {
 
-        Seguimiento listaActual = seguimientoService.findById(id);
+        Seguimiento listaActual = seguimientoService.findByReference(id);
         listaActual.setEstado(c.isEstado());
         listaActual.setReferencia(c.getReferencia());
         listaActual.setDescripcion(c.getDescripcion());

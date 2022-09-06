@@ -26,7 +26,7 @@ public class ProyectoController {
     }
     @GetMapping("/search/{id}")
     public ResponseEntity<Proyecto> search(@PathVariable String reference) {
-        return new ResponseEntity<>(proyectoService.findById(reference), HttpStatus.OK);
+        return new ResponseEntity<>(proyectoService.findByReference(reference), HttpStatus.OK);
     }
 
 

@@ -13,7 +13,7 @@ public class SeguimientoServiceImpl  extends GenericServiceImpl<Seguimiento, Str
     @Autowired
     SeguimientoRepository seguimientorepo;
     @Override
-    public Seguimiento findById(String s) {
+    public Seguimiento findByReference(String s) {
         return null;
     }
 

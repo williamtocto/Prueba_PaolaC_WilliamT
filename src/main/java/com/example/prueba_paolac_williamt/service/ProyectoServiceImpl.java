@@ -15,7 +15,7 @@ public class ProyectoServiceImpl extends GenericServiceImpl<Proyecto, String> im
     ProyectoRepository proyectorepo;
 
     @Override
-    public Proyecto findById(String s) {
+    public Proyecto findByReference(String s) {
         return null;
     }
 
