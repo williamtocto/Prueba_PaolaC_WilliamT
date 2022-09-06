@@ -1,6 +1,5 @@
 package com.example.prueba_paolac_williamt.controller;
 
-
 import com.example.prueba_paolac_williamt.model.Seguimiento;
 import com.example.prueba_paolac_williamt.service.SeguimientoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,16 +34,26 @@ public class SeguimientoController {
     }
     // actualizar
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Seguimiento> actualizarLista(@PathVariable String id, @RequestBody Proyecto c) {
+    public ResponseEntity<Seguimiento> actualizarLista(@PathVariable String id, @RequestBody Seguimiento c) {
 
-        Proyecto listaActual = seguimientoService.get(id);
-        listaActual.setNombre(c.getNombre());
-        listaActual.setCantidad(c.getCantidad());
-        listaActual.setPrecio(c.getPrecio());
+        Seguimiento listaActual = seguimientoService.findById(id);
+        listaActual.setEstado(c.isEstado());
+        listaActual.setReferencia(c.getReferencia());
         listaActual.setDescripcion(c.getDescripcion());
-
-        productoService.save(listaActual);
+        listaActual.setHoras_actuales(c.getHoras_actuales());
+        listaActual.setHoras_estimadas(c.getHoras_estimadas());
+        listaActual.setCostos_fijos(c.getCostos_fijos());
+        listaActual.setGrupo(c.getGrupo());
+        listaActual.setDocente_responsable(c.getDocente_responsable());
+        listaActual.setEntregable(c.getEntregable());
+        listaActual.setEjecutado(c.getEjecutado());
+        listaActual.setTarea(c.getTarea());
+        listaActual.setObservacion(c.getObservacion());
+        listaActual.setFecha_entrega(c.getFecha_entrega());
+        listaActual.setPrioridad(c.getPrioridad());
+        seguimientoService.save(listaActual);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
