@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/producto")
-public class ProductoController {
+public class SeguimientoController {
 
 
     @Autowired
-    ProyectoService proyectoService;
+    Service proyectoService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Proyecto>>listar() {

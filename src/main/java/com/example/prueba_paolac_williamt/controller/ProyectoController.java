@@ -1,6 +1,9 @@
 package com.example.prueba_paolac_williamt.controller;
 
 
+import com.example.prueba_paolac_williamt.model.Proyecto;
+import com.example.prueba_paolac_williamt.service.ProyectoService;
+import com.example.prueba_paolac_williamt.service.ProyectoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +13,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/producto")
-public class ProductoController1 {
+public class ProyectoController {
 
 
     @Autowired
-    ProyectoService proyectoService;
+    ProyectoServiceImpl proyectoService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Proyecto>>listar() {
-        List<Proyecto> lista=proyectoService.findAll();
+        List<Proyecto> lista=proyectoService.findByAll();
         return new ResponseEntity<>(lista,HttpStatus.OK);
     }
     @PostMapping("/crear")
@@ -27,21 +30,23 @@ public class ProductoController1 {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Proyecto> eliminarLista(@PathVariable Long id) {
-        proyectoService.delete(id);
+    public ResponseEntity<Proyecto> eliminarLista(@PathVariable String reference) {
+        proyectoService.delete(reference);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     // actualizar
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<Proyecto> actualizarLista(@PathVariable String id, @RequestBody Proyecto c) {
 
-        Proyecto listaActual = proyectoService.get(id);
-        listaActual.setNombre(c.getNombre());
-        listaActual.setCantidad(c.getCantidad());
-        listaActual.setPrecio(c.getPrecio());
-        listaActual.setDescripcion(c.getDescripcion());
+        Proyecto listaActual = proyectoService.FindByID(id);
+        listaActual.setNombre_proyecto(c.getNombre_proyecto());
+        listaActual.setObjetivo_estrategico(c.getObjetivo_estrategico());
+        listaActual.setObjetivoOpertivo(c.getObjetivoOpertivo());
+        listaActual.setObjetivo_tactico(c.getObjetivo_tactico());
+        listaActual.setEstrategia(c.getEstrategia());
 
-        productoService.save(listaActual);
+
+        proyectoService.save(listaActual);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
