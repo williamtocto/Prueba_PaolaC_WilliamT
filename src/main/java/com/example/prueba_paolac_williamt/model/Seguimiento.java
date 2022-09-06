@@ -2,12 +2,14 @@ package com.example.prueba_paolac_williamt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 @AllArgsConstructor
 @Data
 public class Seguimiento {
     private boolean estado;
+    @Id
     private String referencia;
     private String prioridad;
     private Date fecha_entrega;
