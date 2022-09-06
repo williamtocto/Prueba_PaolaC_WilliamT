@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 public class Seguimiento {
 
-    @Id
+
     private boolean estado;
     private String referencia;
     private String prioridad;
