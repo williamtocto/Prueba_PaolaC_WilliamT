@@ -12,8 +12,9 @@ import java.util.Date;
 @Getter
 @Setter
 public class Seguimiento {
-    private boolean estado;
+
     @Id
+    private boolean estado;
     private String referencia;
     private String prioridad;
     private Date fecha_entrega;
