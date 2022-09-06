@@ -13,7 +13,6 @@ import java.util.List;
 @RequestMapping("/api/seguimiento")
 public class SeguimientoController {
 
-
     @Autowired
     SeguimientoServiceImpl seguimientoService;
 
