@@ -1,6 +1,8 @@
 package com.example.prueba_paolac_williamt.controller;
 
 
+import com.example.prueba_paolac_williamt.model.Seguimiento;
+import com.example.prueba_paolac_williamt.service.SeguimientoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,28 +16,28 @@ public class SeguimientoController {
 
 
     @Autowired
-    Service proyectoService;
+    SeguimientoServiceImpl seguimientoService;
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Proyecto>>listar() {
-        List<Proyecto> lista=proyectoService.findAll();
+    public ResponseEntity<List<Seguimiento>>listar() {
+        List<Seguimiento> lista= seguimientoService.findByAll();
         return new ResponseEntity<>(lista,HttpStatus.OK);
     }
     @PostMapping("/crear")
-    public ResponseEntity<Proyecto> crearLista(@RequestBody Proyecto u) {
-        return new ResponseEntity<>(proyectoService.save(u), HttpStatus.CREATED);
+    public ResponseEntity<Seguimiento> crearLista(@RequestBody Seguimiento u) {
+        return new ResponseEntity<>(seguimientoService.save(u), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Proyecto> eliminarLista(@PathVariable Long id) {
-        proyectoService.delete(id);
+    public ResponseEntity<Seguimiento> eliminarLista(@PathVariable String id) {
+        seguimientoService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     // actualizar
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Proyecto> actualizarLista(@PathVariable String id, @RequestBody Proyecto c) {
+    public ResponseEntity<Seguimiento> actualizarLista(@PathVariable String id, @RequestBody Proyecto c) {
 
-        Proyecto listaActual = proyectoService.get(id);
+        Proyecto listaActual = seguimientoService.get(id);
         listaActual.setNombre(c.getNombre());
         listaActual.setCantidad(c.getCantidad());
         listaActual.setPrecio(c.getPrecio());
