@@ -12,7 +12,7 @@ public class Proyecto {
     private String Referencia;
     private String nombre_proyecto;
     private String objetivo_estrategico;
-    private double objetivo_tactico;
+    private String objetivo_tactico;
     private String estrategia;
     private String objetivoOpertivo;
 
