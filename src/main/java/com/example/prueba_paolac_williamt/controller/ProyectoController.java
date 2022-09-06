@@ -29,6 +29,7 @@ public class ProyectoController {
         return new ResponseEntity<>(proyectoService.findById(reference), HttpStatus.OK);
     }
 
+
     @PostMapping("/crear")
     public ResponseEntity<Proyecto> crearLista(@RequestBody Proyecto u) {
         return new ResponseEntity<>(proyectoService.save(u), HttpStatus.CREATED);
